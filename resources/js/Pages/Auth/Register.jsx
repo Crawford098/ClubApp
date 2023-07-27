@@ -10,6 +10,8 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
+        zone: '',
+        address: '',
         password: '',
         password_confirmation: '',
     });
@@ -36,11 +38,11 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="churchName" value="Church Name" />
 
                     <TextInput
-                        id="name"
-                        name="name"
+                        id="churchName"
+                        name="churchName"
                         value={data.name}
                         className="mt-1 block w-full"
                         autoComplete="name"
@@ -67,6 +69,41 @@ export default function Register() {
                     />
 
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="zone" value="Zone" />
+
+                    <TextInput
+                        id="zone"
+                        type="number"
+                        name="zone"
+                        max={12}
+                        value={data.zone}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={handleOnChange}
+                        required
+                    />
+
+                    <InputError message={errors.zone} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="address" value="Address" />
+
+                    <TextInput
+                        id="address"
+                        type="text"
+                        name="address"
+                        value={data.address}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={handleOnChange}
+                        required
+                    />
+
+                    <InputError message={errors.address} className="mt-2" />
                 </div>
 
                 <div className="mt-4">

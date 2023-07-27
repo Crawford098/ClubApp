@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('churchId');
             $table->integer('districtId');
             $table->integer('zoneId');
-            $table->string('name');
-            $table->string('address');
+            $table->string('name')->nullable();
+            $table->string('address')->nullable();
             $table->tinyInteger('hidden');
 
             $table->timestamps();
@@ -32,11 +32,11 @@ return new class extends Migration
             $table->string('club_types');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('phone');
-            $table->string('address');
-            $table->tinyInteger('baptized');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->tinyInteger('baptized')->nullable();
             $table->date('date_of_birth');
-            $table->date('baptism_date');
+            $table->date('baptism_date')->nullable();
             $table->integer('directive_positionId');
             $table->integer('team_positionId');
             $table->tinyInteger('hidden');
