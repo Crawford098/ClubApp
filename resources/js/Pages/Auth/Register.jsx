@@ -8,7 +8,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
+        churchName: '',
         email: '',
         zone: '',
         address: '',
@@ -43,7 +43,7 @@ export default function Register() {
                     <TextInput
                         id="churchName"
                         name="churchName"
-                        value={data.name}
+                        value={data.churchName}
                         className="mt-1 block w-full"
                         autoComplete="name"
                         isFocused={true}
@@ -51,7 +51,7 @@ export default function Register() {
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.churchName} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
