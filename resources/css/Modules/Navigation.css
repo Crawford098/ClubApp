@@ -5,3 +5,15 @@
     height: 100px;
     background-color: red;
 }
+
+.nav-items {
+    margin-bottom: 1rem;
+
+}
+
+.nav-items:hover {
+    background-color: white;
+    border-radius: 5%;
+    color: #1a202c;
+    height: 1.5rem;
+}
