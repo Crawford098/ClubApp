@@ -13,7 +13,15 @@
 
 .nav-items:hover {
     background-color: white;
-    border-radius: 5%;
     color: #1a202c;
-    height: 1.5rem;
+    height: 1.7rem;
 }
+
+.mtp-50 {
+    margin-top: 50%;
+}
+
+.icon svg {
+    display: inline-block;
+}
+
