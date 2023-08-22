@@ -25,3 +25,8 @@
     display: inline-block;
 }
 
+.nav-switch-icon svg{
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0.25rem;
+}

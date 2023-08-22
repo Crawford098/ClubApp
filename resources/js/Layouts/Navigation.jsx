@@ -6,10 +6,15 @@ import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 export default function Navigation ({children}) {
 
     return (
-        <div className='bg-pathfinder w-3/12 flex-col h-screen text-white' data-source="resources/js/Layouts/Navigation.jsx">
+        <div className='bg-pathfinder w-3/12 flex-col h-screen text-white border-x shadow border-pathfinder-line' data-source="resources/js/Layouts/Navigation.jsx">
 
-            <div className='py-6'>
-                hello
+            <div className='py-6 flex justify-between items-center'>
+                <div>
+                    <span>Hello World</span>
+                </div>
+                <div>
+                    <span className="nav-switch-icon mx-4 my-4"><BsArrowLeftRight/></span>
+                </div>
             </div>
 
             <div className='header border-y border-pathfinder-line'>
