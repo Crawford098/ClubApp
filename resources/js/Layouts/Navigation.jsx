@@ -8,7 +8,7 @@ export default function Navigation ({children}) {
     return (
         <div className='bg-pathfinder w-3/12 flex-col h-screen text-white border-x shadow border-pathfinder-line' data-source="resources/js/Layouts/Navigation.jsx">
 
-            <div className='py-2 flex justify-between items-center'>
+            <div className='py-px flex justify-between items-center'>
                 <div>
                     <span>Hello World</span>
                 </div>
