@@ -1,14 +1,14 @@
 import '/resources/css/Modules/Navigation.css';
 import pathfinder from '/resources/assets/images/PathFinder.png';
 import { BsBarChartLine, BsPeople,BsPersonLinesFill, BsPersonCircle, BsCalendarCheck, BsGear,BsArrowLeftRight, BsArrowBarRight} from "react-icons/bs";
-import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import {Link} from '@inertiajs/react';
 
 export default function Navigation ({children}) {
 
     return (
         <div className='bg-pathfinder w-3/12 flex-col h-screen text-white border-x shadow border-pathfinder-line' data-source="resources/js/Layouts/Navigation.jsx">
 
-            <div className='py-6 flex justify-between items-center'>
+            <div className='py-2 flex justify-between items-center'>
                 <div>
                     <span>Hello World</span>
                 </div>
@@ -32,28 +32,28 @@ export default function Navigation ({children}) {
                 <div className="nav-items rounded-md w-9/12">
                     <div className="px-4 ">
                         <span className="icon"><BsBarChartLine/></span>
-                        <span className='px-4'>Dashboard</span>
+                        <span className='px-4'><Link href="/dashboard">Dashboard</Link></span>
                     </div>
                 </div>
 
                 <div className="nav-items rounded-md w-9/12">
                     <div className="px-4">
                         <span className="icon"><BsPersonLinesFill/></span>
-                        <span className='px-4'>Member</span>
+                        <span className='px-4'><Link href="/members">Member</Link></span>
                     </div>
                 </div>
 
                 <div className="nav-items rounded-md w-9/12">
                     <div className="px-4">
                         <span className="icon"><BsPeople/></span>
-                        <span className='px-4'>Unit</span>
+                        <span className='px-4'><Link href="/units">Unit</Link></span>
                     </div>
                 </div>
 
                 <div className="nav-items rounded-md w-9/12">
                     <div className="px-4">
                         <span className="icon"><BsCalendarCheck/></span>
-                        <span className='px-4'>Calendar</span>
+                        <span className='px-4'><Link href="/calendar">Calendar</Link></span>
                     </div>
                 </div>
             </div>

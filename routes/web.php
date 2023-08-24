@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Modules\Calendar\Controller\Calendar;
+use App\Modules\Dashboard\Controller\Dashboard;
+use App\Modules\Units\Controllers\Units;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Modules\Members\Controllers\Members;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +29,23 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Modules/Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::controller(Dashboard::class)->group(function () {
+    Route::get('/dashboard', 'index')->name('dashboard');
+})->middleware(['auth', 'verify']);
+
+Route::controller(Members::class)->group(function () {
+    Route::get('/members', 'index')->name('members');
+    Route::post('/members', 'insert')->name('members.insert');
+    Route::post('/members', 'update')->name('members.update');;
+})->middleware('auth');
+
+Route::controller(Units::class)->group(function () {
+    Route::get('/units', 'index')->name('units');
+})->middleware('auth');
+
+Route::controller(Calendar::class)->group(function () {
+    Route::get('/calendar', 'index')->name('calendar');
+})->middleware('auth');
 
 //Revisar lógica
 Route::middleware('auth')->group(function () {

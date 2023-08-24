@@ -94,7 +94,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    <PrimaryButton className="ml-4" disabled={processing}>
+                    <PrimaryButton className="ml-4 text-black border-purple border-2 hover:bg-purple hover:text-white" disabled={processing}>
                         Log in
                     </PrimaryButton>
                 </div>
