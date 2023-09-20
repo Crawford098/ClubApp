@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Calendar\Controller;
+<?php namespace App\Modules\Calendar\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Inertia\Inertia;

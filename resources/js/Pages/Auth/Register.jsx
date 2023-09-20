@@ -4,9 +4,14 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import Dropdown from '@/Components/Dropdown';
+import { SelectPicker, CheckTreePicker } from 'rsuite';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register() {
+export default function Register({churchesData}) {
+
+    console.log(churchesData);
+
     const { data, setData, post, processing, errors, reset } = useForm({
         churchName: '',
         email: '',
@@ -40,18 +45,15 @@ export default function Register() {
                 <div>
                     <InputLabel htmlFor="churchName" value="Church Name" />
 
-                    <TextInput
-                        id="churchName"
-                        name="churchName"
-                        value={data.churchName}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        onChange={handleOnChange}
-                        required
+                    <CheckTreePicker
+                        defaultExpandAll
+                        data={churchesData}
+                        // disabledItemValues={['1-1', '1-1-2']}
+                        // defaultValue={[24]}
+                        style={{ width: 220 }}
                     />
 
-                    <InputError message={errors.churchName} className="mt-2" />
+                    {/*<InputError message={errors.churchName} className="mt-2" />*/}
                 </div>
 
                 <div className="mt-4">

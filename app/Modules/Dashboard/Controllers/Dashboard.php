@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Dashboard\Controller;
+<?php namespace App\Modules\Dashboard\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Inertia\Inertia;

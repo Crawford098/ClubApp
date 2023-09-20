@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Modules\Calendar\Controller\Calendar;
-use App\Modules\Dashboard\Controller\Dashboard;
+use App\Modules\Calendar\Controllers\Calendar;
+use App\Modules\Dashboard\Controllers\Dashboard;
 use App\Modules\Units\Controllers\Units;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
