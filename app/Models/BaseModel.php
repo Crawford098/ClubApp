@@ -76,6 +76,12 @@ class BaseModel extends Model
             $return = "first";
         }
 
+        if (isset($param['returnType']) && !empty($param['returnType']))
+        {
+            $returnType             = $param['returnType'];
+            return $query->$return()->$returnType();
+        }
+
         return $query->$return();
     }
 }
