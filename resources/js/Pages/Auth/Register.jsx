@@ -10,7 +10,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register({churchesData}) {
 
-    console.log(churchesData);
+    console.log(Object.values(churchesData));
 
     const { data, setData, post, processing, errors, reset } = useForm({
         churchName: '',
@@ -47,9 +47,8 @@ export default function Register({churchesData}) {
 
                     <CheckTreePicker
                         defaultExpandAll
-                        data={churchesData}
+                        data={Object.values(churchesData)}
                         // disabledItemValues={['1-1', '1-1-2']}
-                        // defaultValue={[24]}
                         style={{ width: 220 }}
                     />
 

@@ -12,20 +12,16 @@ class Auth
         $this->fieldOfficeModel = new FieldOfficeModel();
     }
 
-    public function register()
+    public function register(): \Inertia\Response
     {
-
         $data = $this->fieldOfficeModel->getColumnBy([
             'columns' => ['field_officeId','code','typeId','parentId','name', 'level'],
             'whereIn' => ['typeId' => [4,5,6]]
         ]);
 
-        $result = $this->getChurchDropdown( $this->objectToArray($data), 4);
-
-        dd($result);
-
         return Inertia::render('Auth/Register', [
-            'churchesData' => $this->fieldOfficeModel->getColumnBy(['columns' => '',  'whereIn' => ['typeId' => [4,5,6]]])
+            'churchesData'      => $this->getChurchDropdown($this->objectToArray($data), 4),
+            'disableItemValue'  => []
         ]);
     }
 
@@ -36,13 +32,10 @@ class Auth
 
         foreach ($data as $key => $value)
         {
-            $conditional = ($parentId && $parentId == $value['parentId'] || $parentId == 0);
-
             if ($level == $value['level'] && ($parentId == 0 || $parentId == $value['parentId']))
             {
                 $result[$value['field_officeId']]['value']       = $value['field_officeId'];
                 $result[$value['field_officeId']]['label']       = $value['name'];
-                $result[$value['field_officeId']]['level']       = $value['level'];
                 $result[$value['field_officeId']]['children']    = $this->getChurchDropdown($data, $level+1, $value['field_officeId']);
             }
         }
