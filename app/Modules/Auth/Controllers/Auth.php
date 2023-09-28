@@ -42,7 +42,8 @@ class Auth
             {
                 $result[$value['field_officeId']]['value']       = $value['field_officeId'];
                 $result[$value['field_officeId']]['label']       = $value['name'];
-                $result[$value['field_officeId']]['children']    = $this->getChurchDropdown( $data, $level++, $value['field_officeId']);
+                $result[$value['field_officeId']]['level']       = $value['level'];
+                $result[$value['field_officeId']]['children']    = $this->getChurchDropdown($data, $level+1, $value['field_officeId']);
             }
         }
 
