@@ -8,9 +8,7 @@ import Dropdown from '@/Components/Dropdown';
 import { SelectPicker, CheckTreePicker } from 'rsuite';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register({churchesData}) {
-
-    console.log(Object.values(churchesData));
+export default function Register({churchesData, disableItemValue}) {
 
     const { data, setData, post, processing, errors, reset } = useForm({
         churchName: '',
@@ -48,8 +46,8 @@ export default function Register({churchesData}) {
                     <CheckTreePicker
                         defaultExpandAll
                         data={Object.values(churchesData)}
-                        // disabledItemValues={['1-1', '1-1-2']}
-                        style={{ width: 220 }}
+                        disabledItemValues={disableItemValue}
+                        style={{ width: '100%' }}
                     />
 
                     {/*<InputError message={errors.churchName} className="mt-2" />*/}
