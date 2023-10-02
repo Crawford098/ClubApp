@@ -12,9 +12,8 @@ export default function Register({churchesData, disableItemValue}) {
 
     const { data, setData, post, processing, errors, reset } = useForm({
         churchName: '',
+        username: '',
         email: '',
-        zone: '',
-        address: '',
         password: '',
         password_confirmation: '',
     });
@@ -54,6 +53,23 @@ export default function Register({churchesData, disableItemValue}) {
                 </div>
 
                 <div className="mt-4">
+                    <InputLabel htmlFor="username" value="Username" />
+
+                    <TextInput
+                        id="username"
+                        type="text"
+                        name="username"
+                        value={data.username}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={handleOnChange}
+                        required
+                    />
+
+                    <InputError message={errors.username} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
                     <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
@@ -68,41 +84,6 @@ export default function Register({churchesData, disableItemValue}) {
                     />
 
                     <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="zone" value="Zone" />
-
-                    <TextInput
-                        id="zone"
-                        type="number"
-                        name="zone"
-                        max={12}
-                        value={data.zone}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={handleOnChange}
-                        required
-                    />
-
-                    <InputError message={errors.zone} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="address" value="Address" />
-
-                    <TextInput
-                        id="address"
-                        type="text"
-                        name="address"
-                        value={data.address}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={handleOnChange}
-                        required
-                    />
-
-                    <InputError message={errors.address} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
