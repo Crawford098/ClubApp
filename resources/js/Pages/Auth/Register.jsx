@@ -31,7 +31,7 @@ export default function Register({churchesData, disableItemValue}) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('register'));
+        post(route('signUp'));
     };
 
     return (

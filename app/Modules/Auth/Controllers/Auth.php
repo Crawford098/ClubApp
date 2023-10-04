@@ -2,17 +2,21 @@
 
 use App\Modules\Auth\Models\FieldOfficeModel;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 class Auth
 {
+    private $request;
     private $fieldOfficeModel;
+
     public function __construct()
     {
         //Models
         $this->fieldOfficeModel = new FieldOfficeModel();
+        $this->request          = new Request();
     }
 
-    public function register(): \Inertia\Response
+    public function index(): \Inertia\Response
     {
         $data = $this->fieldOfficeModel->getColumnBy([
             'columns' => ['field_officeId','code','typeId','parentId','name', 'level'],
@@ -24,6 +28,11 @@ class Auth
             'churchesData'      => $this->getChurchDropdown($this->objectToArray($data), 4),
             'disableItemValue'  => $this->itemsDisable($data)
         ]);
+    }
+
+    public function register()
+    {
+        dd($this->request);
     }
 
     //TODO: Pasarlo a un helper

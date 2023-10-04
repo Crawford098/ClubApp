@@ -13,13 +13,21 @@ use Illuminate\Support\Facades\Route;
 use App\Modules\Auth\Controllers\Auth;
 
 Route::middleware('guest')->group(function () {
-//    Route::get('register', [RegisteredUserController::class, 'create'])
+
+    Route::controller(Auth::class)->group( function () {
+        /** The fist string reference to browser Url.
+         *  The second string reference the method of the Auth Classes in this case.*
+         *  The third string in '->name('') function is use to call this from route() function.'
+         */
+        Route::get('register', 'index')->name('register');
+        Route::post('sign_up', 'register')->name('signUp');
+
+    });
+
+    //    Route::get('register', [RegisteredUserController::class, 'create'])
 //                ->name('register');
 
-    Route::get('register', [Auth::class, 'register'])
-                ->name('register');
-
-    Route::post('register', [RegisteredUserController::class, 'store']);
+//    Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
