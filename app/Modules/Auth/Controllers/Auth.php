@@ -30,9 +30,9 @@ class Auth
         ]);
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        dd($this->request);
+
     }
 
     //TODO: Pasarlo a un helper
