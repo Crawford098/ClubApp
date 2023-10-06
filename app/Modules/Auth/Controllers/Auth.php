@@ -32,7 +32,7 @@ class Auth
 
     public function register(Request $request)
     {
-
+        dd($request->input());
     }
 
     //TODO: Pasarlo a un helper
@@ -48,6 +48,11 @@ class Auth
                 $result[$counter]['value']       = $value['field_officeId'];
                 $result[$counter]['label']       = $value['name'];
                 $result[$counter]['children']    = $this->getChurchDropdown($data, $level+1, $value['field_officeId']);
+
+                if (empty($result[$counter]['children']))
+                {
+                    unset($result[$counter]['children']);
+                }
                 $counter++;
             }
         }

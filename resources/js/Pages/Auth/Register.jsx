@@ -44,7 +44,8 @@ export default function Register({churchesData, disableItemValue}) {
 
                     <CheckTreePicker
                         defaultExpandAll
-                        data={Object.values(churchesData)}
+                        data={churchesData}
+                        name='churchName'
                         disabledItemValues={disableItemValue}
                         style={{ width: '100%' }}
                     />
