@@ -35,7 +35,7 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "app/helper/array_helper"
+            "app/Helper/array_helper.php"
         ]
     },
     "scripts": {
