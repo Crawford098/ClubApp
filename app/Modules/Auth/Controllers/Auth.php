@@ -1,19 +1,21 @@
 <?php namespace App\Modules\Auth\Controllers;
 
 use App\Modules\Auth\Models\FieldOfficeModel;
+use App\Modules\Auth\Models\UserModel;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class Auth
 {
-    private $request;
-    private $fieldOfficeModel;
+    //Models
+    private FieldOfficeModel $fieldOfficeModel;
+    private UserModel $userModel;
 
     public function __construct()
     {
         //Models
         $this->fieldOfficeModel = new FieldOfficeModel();
-        $this->request          = new Request();
+        $this->userModel        = new UserModel();
     }
 
     public function index(): \Inertia\Response
@@ -32,7 +34,19 @@ class Auth
 
     public function register(Request $request)
     {
-        dd($request->input());
+        $data = [
+            'churchId'  => $request->input('churchId'),
+            'username'  => $request->input('username'),
+            'email'     => $request->input('email'),
+            'password'  => $request->input('password')
+        ];
+
+        dd($data);
+
+//        UserModel::create($data);
+
+
+//        return redirect()->route('dashboard');
     }
 
     //TODO: Pasarlo a un helper

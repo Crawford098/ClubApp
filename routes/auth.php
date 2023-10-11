@@ -19,7 +19,7 @@ Route::middleware('guest')->group(function () {
          *  The second string reference the method of the Auth Classes in this case.*
          *  The third string in '->name('') function is use to call this from route() function.'
          */
-        Route::get('register', 'index')->name('register');
+        Route::get('register', 'index');
         Route::post('sign_up', 'register')->name('signUp');
 
     });
