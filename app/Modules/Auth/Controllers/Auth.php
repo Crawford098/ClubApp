@@ -41,12 +41,11 @@ class Auth
             'password'  => $request->input('password')
         ];
 
-        dd($data);
+        $result = $this->userModel->create($data);
 
-//        UserModel::create($data);
+        dd($result);
 
-
-//        return redirect()->route('dashboard');
+        return redirect()->route('dashboard');
     }
 
     //TODO: Pasarlo a un helper

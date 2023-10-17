@@ -11,7 +11,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 export default function Register({churchesData, disableItemValue}) {
 
     const { data, setData, post, processing, errors, reset } = useForm({
-        churchName: '',
+        churchId: '',
         username: '',
         email: '',
         password: '',
@@ -40,14 +40,17 @@ export default function Register({churchesData, disableItemValue}) {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="churchName" value="Church Name" />
+                    <InputLabel htmlFor="churchId" value="Church Name" />
 
                     <CheckTreePicker
                         defaultExpandAll
                         data={churchesData}
-                        name='churchName'
+                        name='churchId'
                         disabledItemValues={disableItemValue}
                         style={{ width: '100%' }}
+                        onChange={(values)=> {
+                            setData("churchId", values[0]);
+                        }}
                     />
 
                     {/*<InputError message={errors.churchName} className="mt-2" />*/}
