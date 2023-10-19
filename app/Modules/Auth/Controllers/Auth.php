@@ -35,18 +35,21 @@ class Auth
     public function register(Request $request)
     {
         $data = [
-            'churchId'  => $request->input('churchId'),
-            'username'  => $request->input('username'),
-            'email'     => $request->input('email'),
-            'password'  => $request->input('password')
+            'churchId'                  => $request->input('churchId'),
+            'username'                  => $request->input('username'),
+            'email'                     => $request->input('email'),
+            'password'                  => $request->input('password'),
+            'created_date'              => date('Y-m-d')
         ];
 
-        $result = $this->userModel->create($data);
-
-        dd($result);
-
+        $this->userModel->create($data);
         return redirect()->route('dashboard');
     }
+
+
+
+
+
 
     //TODO: Pasarlo a un helper
     public function getChurchDropdown(array $data, int $level = 0, $parentId = 0) : array

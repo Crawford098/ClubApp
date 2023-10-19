@@ -2,21 +2,15 @@
 
 use App\Models\BaseModel;
 
-class UserModel extends BaseModel
+class ClubModel extends BaseModel
 {
-    protected $table                = 'cl_users';
-    protected $primaryKey           = 'userId';
+    protected $table                = 'cl_clubs';
+    protected $primaryKey           = 'clubId';
     public $incrementing            = true;
     const CREATED_AT                = 'created_at';
     const UPDATED_AT                = 'updated_at';
-    protected $fillable             = [
-        'userId',
-        'churchId',
-        'username',
-        'email',
-        'password',
-        'created_date'
-    ];
+    protected $fillable             = ['clubId', 'churchId', 'name', 'typeId', 'statusId', 'date', 'hidden', 'created_date'];
+    protected $hidden               = ['slogan'];
 
     public function __construct(array $attributes = [])
     {
