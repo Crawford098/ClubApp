@@ -29,25 +29,32 @@ Route::get('/', function () {
     ]);
 });
 
-Route::controller(Dashboard::class)->group(function () {
-    Route::get('/dashboard', 'index')->name('dashboard');
-})->middleware(['auth', 'verify']);
+Route::middleware(['auth', 'verify'])->group(function ()
+{
+    Route::controller(Dashboard::class)->group(function ()
+    {
+        Route::get('/dashboard', 'index')->name('dashboard');
+    });
 
-Route::controller(Members::class)->group(function () {
-    Route::get('/members', 'index')->name('members');
-    Route::post('/members', 'insert')->name('members.insert');
-    Route::post('/members', 'update')->name('members.update');;
-})->middleware('auth');
+    Route::controller(Members::class)->group(function ()
+    {
+        Route::get('/members', 'index')->name('members');
+        Route::post('/members', 'insert')->name('members.insert');
+        Route::post('/members', 'update')->name('members.update');;
+    });
 
-Route::controller(Units::class)->group(function () {
-    Route::get('/units', 'index')->name('units');
-})->middleware('auth');
+    Route::controller(Units::class)->group(function ()
+    {
+        Route::get('/units', 'index')->name('units');
+    });
 
-Route::controller(Calendar::class)->group(function () {
-    Route::get('/calendar', 'index')->name('calendar');
-})->middleware('auth');
+    Route::controller(Calendar::class)->group(function ()
+    {
+        Route::get('/calendar', 'index')->name('calendar');
+    });
+});
 
-//Revisar lógica
+//Todo: Revisar lógica
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

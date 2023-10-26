@@ -35,10 +35,13 @@ export default function Register({churchesData, disableItemValue}) {
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout pageName={'Register'}>
             <Head title="Register" />
 
             <form onSubmit={submit}>
+                <div className="my-6">
+                    <h2>Register Your Church</h2>
+                </div>
                 <div>
                     <InputLabel htmlFor="churchId" value="Church Name" />
 
