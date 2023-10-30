@@ -8,7 +8,12 @@
 }
 
 .bg-figure {
-    background-image: url("/resources/assets/images/Church Register.svg");
+    background-image: url("/resources/assets/images/ChurchRegister.svg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.square {
+
+
 }
