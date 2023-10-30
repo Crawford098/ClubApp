@@ -29,7 +29,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth', 'verify'])->group(function ()
+Route::middleware(['auth'])->group(function ()
 {
     Route::controller(Dashboard::class)->group(function ()
     {

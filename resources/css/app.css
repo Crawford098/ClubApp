@@ -7,13 +7,24 @@
     line-height: 14px;
 }
 
-.bg-figure {
-    background-image: url("/resources/assets/images/ChurchRegister.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
+.square {
+    width: 100%;
+    height: 100vh;
+    background-color: #2D59A3;
 }
 
-.square {
+.scroll-is-no-space {
+    overflow: initial;
+}
 
+@media (max-height: 530px) {
+    .scroll-is-no-space {
+        overflow: scroll;
+    }
+}
 
+@media (max-width: 1003px) {
+    .square {
+        display: none;
+    }
 }
