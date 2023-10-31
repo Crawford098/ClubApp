@@ -28,7 +28,8 @@ module.exports = {
                 'pathfinder-line'   : '#FF6F6F',
                 'adventurers'       : '#5475AD',
                 'master-guides'     : '#3D6A80',
-                'primary-blue'      : '#2D59A3'
+                'primary-blue'      : '#2D59A3',
+                'secondary-blue'    : '#4774BF'
             },
         },
 
