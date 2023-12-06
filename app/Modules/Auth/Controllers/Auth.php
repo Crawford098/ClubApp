@@ -1,7 +1,6 @@
 <?php namespace App\Modules\Auth\Controllers;
 
 use App\Modules\Auth\Models\FieldOfficeModel;
-use App\Modules\Auth\Models\UserModel;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -9,13 +8,11 @@ class Auth
 {
     //Models
     private FieldOfficeModel $fieldOfficeModel;
-    private UserModel $userModel;
 
     public function __construct()
     {
         //Models
         $this->fieldOfficeModel = new FieldOfficeModel();
-        $this->userModel        = new UserModel();
     }
 
     public function index(): \Inertia\Response
@@ -31,25 +28,6 @@ class Auth
             'disableItemValue'  => $this->itemsDisable($data)
         ]);
     }
-
-    public function register(Request $request)
-    {
-        $data = [
-            'churchId'                  => $request->input('churchId'),
-            'username'                  => $request->input('username'),
-            'email'                     => $request->input('email'),
-            'password'                  => $request->input('password'),
-            'created_date'              => date('Y-m-d')
-        ];
-
-        $this->userModel->create($data);
-        return redirect()->route('dashboard');
-    }
-
-
-
-
-
 
     //TODO: Pasarlo a un helper
     public function getChurchDropdown(array $data, int $level = 0, $parentId = 0) : array

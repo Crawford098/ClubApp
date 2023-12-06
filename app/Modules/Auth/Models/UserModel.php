@@ -9,14 +9,7 @@ class UserModel extends BaseModel
     public $incrementing            = true;
     const CREATED_AT                = 'created_at';
     const UPDATED_AT                = 'updated_at';
-    protected $fillable             = [
-        'userId',
-        'churchId',
-        'username',
-        'email',
-        'password',
-        'created_date'
-    ];
+    protected $fillable             = ['userId', 'churchId', 'username', 'email', 'password', 'created_date'];
 
     public function __construct(array $attributes = [])
     {
