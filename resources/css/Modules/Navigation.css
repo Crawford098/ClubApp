@@ -8,18 +8,23 @@
 }
 
 .nav-items {
-    margin-bottom: 1rem;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
 
+.nav-items a {
+    text-decoration: none;
 }
 
 .nav-items:hover {
     background-color: white;
     color: #1a202c;
-    height: 1.7rem;
 }
 
-.mtp-50 {
-    margin-top: 50%;
+.nav-items a:hover {
+    color: #1a202c;
 }
 
 .icon svg {

@@ -20,13 +20,9 @@ Route::middleware('guest')->group(function () {
          *  The third string in '->name('') function is use to call this from route() function.'
          */
         Route::get('register', 'index')->name('register');
-//        Route::post('sign_up', 'register')->name('signUp');
     });
 
-
-    //    Route::get('register', [RegisteredUserController::class, 'create'])
-    //                ->name('register');
-        Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
