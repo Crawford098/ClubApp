@@ -18,12 +18,17 @@
     text-decoration: none;
 }
 
-.nav-items:hover {
+.nav-items:hover, .nav-items:active {
     background-color: white;
     color: #1a202c;
 }
 
 .nav-items a:hover {
+    color: #1a202c;
+}
+
+.nav-items:focus {
+    background-color: white;
     color: #1a202c;
 }
 

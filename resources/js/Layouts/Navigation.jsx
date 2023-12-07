@@ -2,11 +2,12 @@ import '/resources/css/Modules/Navigation.css';
 import pathfinder from '/resources/assets/images/PathFinder.png';
 import { BsBarChartLine, BsPeople,BsPersonLinesFill, BsPersonCircle, BsCalendarCheck, BsGear,BsArrowLeftRight, BsArrowBarRight} from "react-icons/bs";
 import {Link} from '@inertiajs/react';
+import { UIIconButton } from '/resources/js/Components/UIComponents/UIIconButton';
 
 export default function Navigation ({children}) {
 
     return (
-        <div className='bg-pathfinder w-[450px] flex-col h-screen text-white border-x shadow border-pathfinder-line' data-source="resources/js/Layouts/Navigation.jsx">
+        <div className='bg-pathfinder w-[370px] flex-col h-screen relative text-white border-x shadow border-pathfinder-line' data-source="resources/js/Layouts/Navigation.jsx">
             <div className="container border-b border-pathfinder-line">
                 <div className='flex py-6'>
                     <div>
@@ -50,24 +51,13 @@ export default function Navigation ({children}) {
                     </div>
                 </div>
             </div>
-            <div className="container">
+            <div className="container absolute bottom-0 flex justify-center">
                 <div className="my-12">
                     <div className="flex">
-                        <div className="border rounded-md w-10 h-10 px-4 flex justify-center items-center">
-                            <span><BsGear/></span>
-                        </div>
-
-                        <div className="border rounded-md w-10 h-10 flex justify-center items-center">
-                            <span><BsPersonCircle/></span>
-                        </div>
-
-                        <div className="border rounded-md w-10 h-10 flex justify-center items-center">
-                            <span><BsArrowLeftRight/></span>
-                        </div>
-
-                        <div className="border rounded-md w-10 h-10 flex justify-center items-center">
-                            <span><BsArrowBarRight/></span>
-                        </div>
+                        <UIIconButton icon={<BsGear/>}/>
+                        <UIIconButton icon={<BsPersonCircle/>}/>
+                        <UIIconButton icon={<BsArrowLeftRight/>}/>
+                        <UIIconButton icon={<BsArrowBarRight/>}/>
                     </div>
                 </div>
             </div>
