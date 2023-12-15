@@ -12,6 +12,6 @@ class Members extends BaseController
 
     public function index () : \Inertia\Response
     {
-        return Inertia::render('Modules/Members/Members');
+        return Inertia::render('Modules/Members/Index');
     }
 }

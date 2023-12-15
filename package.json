@@ -23,6 +23,7 @@
         "@fortawesome/fontawesome-svg-core": "^6.4.2",
         "@fortawesome/free-solid-svg-icons": "^6.4.2",
         "@fortawesome/react-fontawesome": "^0.2.0",
+        "material-icons": "^1.13.12",
         "react-icons": "^4.10.1",
         "rsuite": "^5.38.0"
     }

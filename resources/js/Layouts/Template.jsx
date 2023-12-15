@@ -7,7 +7,7 @@ export default function Template ({children}) {
         <div className="flex justify-between" data-source="resources/js/Layouts/Template.jsx">
             <Navigation/>
 
-            <div className="w-full">
+            <div className="w-full mx-10 mt-6">
                 <main>{children}</main>
             </div>
         </div>

@@ -57,7 +57,7 @@ export default function Navigation ({children}) {
                         <UIIconButton icon={<BsGear/>}/>
                         <UIIconButton icon={<BsPersonCircle/>}/>
                         <UIIconButton icon={<BsArrowLeftRight/>}/>
-                        <UIIconButton icon={<BsArrowBarRight/>}/>
+                        <UIIconButton icon={<BsArrowBarRight/>} routeName='logout'/>
                     </div>
                 </div>
             </div>
