@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Api\v1\Members;
+use App\Http\api\v1\Members;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(Members::class)->group(function () {
-    Route::get('/members', 'show');
+    Route::get("members", 'show');
+    Route::post("insertMembers", 'insert');
 });
-
-//Route::middleware([])->group(function () {
-//    Route::controller(Members::class)->get('Api/v1/', function () {
-//        Route::get('members', 'show');
-//    });
-//});
