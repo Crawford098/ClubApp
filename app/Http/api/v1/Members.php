@@ -4,14 +4,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Members\MembersModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Validations\MembersRules;
 
 class Members extends Controller
 {
     protected $membersModel;
+    protected $validator;
 
     public function __construct()
     {
         $this->membersModel = new MembersModel();
+        $this->validator    = MembersValidations::class;
     }
 
     public function show () : array
@@ -71,7 +74,16 @@ class Members extends Controller
             'baptism_date'                  => 'date|date_format:Y-m-d',
         ]);
 
-        //todo: confirm password
+        //confirm password Validation
+
+        if ($request->password !== $request->confirm_password)
+        {
+            $validator->errors()->add(
+                'password', 'Passwords do not match'
+            );
+        }
+
+        $currentPassword = $this->membersModel->find($memberId)->password;
 
         if ($validator->fails())
         {
@@ -83,6 +95,7 @@ class Members extends Controller
         $updateData = [
             'username'                  => $request->username,
             'password'                  => $request->password,
+            //'password'                  => Hash::make($request->password),
             'date_of_birth'             => $request->date_of_birth,
             'babtism_date'              => $request->babtism_date,
             'classId'                   => $request->classId
@@ -116,6 +129,9 @@ class Members extends Controller
 
     private function generateCredentials (Request $request)  : array//todo: terminar funcion
     {
+        //Todo: finish this functions.
+        // Generate username and password by default.
+        
         return [
             'userName' => $request->fistname,
             'password' => 123456
