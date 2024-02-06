@@ -4,7 +4,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Members\MembersModel;
 use App\Validation\MembersRules;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class Members extends Controller
@@ -53,7 +52,6 @@ class Members extends Controller
 
     public function update (int $memberId, Request $request) : array
     {
-
         $membersData                        = $this->membersModel->find($memberId);
         $valid                              = $this->validationRules->validateUpdate($request, $membersData);
 
@@ -96,7 +94,7 @@ class Members extends Controller
         return ['result' => 1];
     }
 
-    private function generateCredentials (Request $request)  : array//todo: terminar funcion
+    private function generateCredentials (Request $request)  : array
     {
         return [
             'userName' => $request->first_name. '-'. date('Y'),
