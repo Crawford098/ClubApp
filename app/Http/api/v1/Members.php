@@ -2,16 +2,20 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\Members\MembersModel;
+use App\Validation\MembersRules;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class Members extends Controller
 {
     protected $membersModel;
+    protected $validationRules;
 
     public function __construct()
     {
-        $this->membersModel = new MembersModel();
+        $this->membersModel                 = new MembersModel();
+        $this->validationRules              = new MembersRules();
     }
 
     public function show () : array
@@ -21,28 +25,14 @@ class Members extends Controller
 
     public function insert (Request $request) : array
     {
-        $validator = Validator::make($request->all(), [
-            'clubId'                        => 'required',
-            'classId'                       => 'required',
-            'club_types'                    => 'required',
-            'email'                         => 'required|unique:App\Models\Members\MembersModel,email|email',
-            'first_name'                    => 'required',
-            'last_name'                     => 'required',
-            'date_of_birth'                 => 'required|date|date_format:Y-m-d',
-            'baptism_date'                  => 'date|date_format:Y-m-d',
-            'directive_positionId'          => 'required',
-            'active'                        => 'required',
-        ],[
-            'email.required'                => 'El campo email es requerido',
-            'email.email'                   => 'Email no valido',
-        ]);
+        $valid                              = $this->validationRules->validate($request);
 
-        if ($validator->fails())
+        if (!$valid['result'])
         {
-            return ['result' => 0, 'error' => $validator->errors()];
+            return ['result' => 0, 'error' => $valid['error']];
         }
 
-        $userCredential = $this->generateCredentials();
+        $userCredential = $this->generateCredentials($request);
 
         $this->membersModel->create([
             'clubId'                        => $request->clubId,
@@ -63,26 +53,18 @@ class Members extends Controller
 
     public function update (int $memberId, Request $request) : array
     {
-        $validator = Validator::make($request->all(), [
-            'username'                      => 'alpha_num|min:5|unique:App\Models\Members\MembersModel,username',
-            'password'                      => 'required',
-            'confirm_password'              => 'required',
-            'date_of_birth'                 => 'date|date_format:Y-m-d',
-            'baptism_date'                  => 'date|date_format:Y-m-d',
-        ]);
 
-        //todo: confirm password
+        $membersData                        = $this->membersModel->find($memberId);
+        $valid                              = $this->validationRules->validateUpdate($request, $membersData);
 
-        if ($validator->fails())
+        if ($valid['result'])
         {
-            return ['result' => 0, 'error' => $validator->errors()];
+            return ['result' => 0, 'error' => $valid['result']];
         }
-
-        $membersData                    = $this->membersModel->find($memberId);
 
         $updateData = [
             'username'                  => $request->username,
-            'password'                  => $request->password,
+            'password'                  => Hash::make($request->newPassword),
             'date_of_birth'             => $request->date_of_birth,
             'babtism_date'              => $request->babtism_date,
             'classId'                   => $request->classId
@@ -117,8 +99,8 @@ class Members extends Controller
     private function generateCredentials (Request $request)  : array//todo: terminar funcion
     {
         return [
-            'userName' => $request->fistname,
-            'password' => 123456
+            'userName' => $request->first_name. '-'. date('Y'),
+            'password' => Hash::make($request->password)
         ];
     }
 }
