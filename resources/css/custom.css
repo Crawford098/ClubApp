@@ -1,3 +1,8 @@
+body {
+    background-color: #FEFEFE;
+    /*background-color: #F8F8FF;*/
+}
+
 .triangle {
     width: 500px;
     height: 500px;
@@ -22,4 +27,8 @@ h1 {
 h2 {
     font-size: 40px;
     font-weight: bold;
+}
+
+table {
+    background-color: #F8F8FF;
 }

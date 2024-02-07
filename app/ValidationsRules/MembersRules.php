@@ -1,4 +1,4 @@
-<?php namespace App\Validation;
+<?php namespace App\ValidationsRules;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\Members\MembersModel;
-use App\Validation\MembersRules;
+use App\ValidationsRules\MembersRules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
