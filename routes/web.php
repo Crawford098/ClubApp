@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function ()
     Route::controller(Members::class)->group(function ()
     {
         Route::get('/members', 'index')->name('members');
-        Route::post('/members', 'insert')->name('members.insert');
+        Route::get('/members/add', 'addMember')->name('addMember');
         Route::post('/members', 'update')->name('members.update');;
     });
 

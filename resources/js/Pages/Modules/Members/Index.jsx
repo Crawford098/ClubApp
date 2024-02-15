@@ -1,35 +1,27 @@
 import Template from '@/Layouts/Template';
-import SearchIcon from '@rsuite/icons/Search';
-import { Input, InputGroup, SelectPicker, Table, Pagination} from 'rsuite';
+import { Input, InputGroup } from 'rsuite';
 import PrimaryButton from "@/Components/PrimaryButton";
 import style from '../../../../css/Modules/members.module.css';
-const { Column, HeaderCell, Cell } = Table;
 import { useState } from 'react';
+import {Link} from '@inertiajs/react';
+import UITable from '@/Components/UIComponents/Tables/UITable';
+import { router } from '@inertiajs/react'
 
-const Index = () => {
-
+const Index = ({members}) => {
+    const [limit, setLimit] = useState(10);
+    const [page, setPage] = useState(1);
+    const [autoHeight, setAutoHeight] = useState(true);
     const styles = {
         width: "300px",
         margin: "0px 24px"
     }
 
-    // const data = [{
-    //     value: 1,
-    //     label: 'Grid'
-    // },{
-    //     value: 2,
-    //     label: 'Table'
-    // }
-    // ];
-
-    const [limit, setLimit] = useState(10);
-    const [page, setPage] = useState(1);
-    const [autoHeight, setAutoHeight] = useState(true);
-
     const handleChangeLimit = dataKey => {
         setPage(1);
         setLimit(dataKey);
     };
+
+    console.log(members);
 
     const data = [{
         id: 1,
@@ -53,78 +45,21 @@ const Index = () => {
                 <div>
                     <h2>Members</h2>
                 </div>
-                <div>
-                </div>
             </div>
 
             <div className={"content-body " + style.filterContainer}>
-                <div>
-                    <h3 className={style.filterTitle}>Filters:</h3>
-                </div>
-                <div className="flex">
-                    <div className="flex w-full items-center">
-                        <InputGroup style={styles}>
-                            <Input placeholder="placeholder"/>
-                            <InputGroup.Addon>
-                                <SearchIcon />
-                            </InputGroup.Addon>
-                        </InputGroup>
+                <div className="flex justify-end">
+                    <InputGroup style={styles} size={'md'}>
+                        <Input placeholder="Buscar"/>
+                    </InputGroup>
 
-                        {/*<SelectPicker data={data}/>*/}
-                    </div>
-                    <div className="items-center">
+                    <Link href={route('addMember')}>
                         <PrimaryButton>New</PrimaryButton>
-                    </div>
+                    </Link>
                 </div>
             </div>
 
-            <div>
-                <Table height={420} data={data} autoHeight={autoHeight}
-                       affixHeader affixHorizontalScrollbar>
-                    <Column width={50} align="center" fixed resizable>
-                        <HeaderCell>Id</HeaderCell>
-                        <Cell dataKey="id" />
-                    </Column>
-
-                    <Column width={100} fixed resizable>
-                        <HeaderCell>First Name</HeaderCell>
-                        <Cell dataKey="firstName" />
-                    </Column>
-
-                    <Column width={100} resizable>
-                        <HeaderCell>Last Name</HeaderCell>
-                        <Cell dataKey="lastName" />
-                    </Column>
-
-                    <Column width={200} resizable>
-                        <HeaderCell>City</HeaderCell>
-                        <Cell dataKey="city" />
-                    </Column>
-                    <Column width={200} flexGrow={1} resizable>
-                        <HeaderCell>Email</HeaderCell>
-                        <Cell dataKey="email" />
-                    </Column>
-                </Table>
-                <div style={{ padding: 20 }}>
-                    <Pagination
-                        prev
-                        next
-                        first
-                        last
-                        ellipsis
-                        boundaryLinks
-                        maxButtons={5}
-                        size="xs"
-                        layout={['total', '-', 'limit', '|', 'pager', 'skip']}
-                        total={data.length}
-                        limitOptions={[7, 20, 30]}
-                        limit={limit}
-                        activePage={page}
-                        onChangePage={setPage}
-                        onChangeLimit={handleChangeLimit}
-                    />
-                </div>
-            </div>
+            <UITable data={members}/>
         </Template>
     );
 }

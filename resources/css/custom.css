@@ -1,6 +1,5 @@
 body {
-    background-color: #FEFEFE;
-    /*background-color: #F8F8FF;*/
+    background-color: #F7F7F7;
 }
 
 .triangle {
@@ -29,6 +28,14 @@ h2 {
     font-weight: bold;
 }
 
-table {
-    background-color: #F8F8FF;
+/*****START Buttom*******/
+.primaryButton {
+     padding: 8px 25px;
 }
+/*****END Table*******/
+
+/*****START Table*******/
+.rs-table {
+    border-radius: 5px;
+}
+/*****END Table*******/
