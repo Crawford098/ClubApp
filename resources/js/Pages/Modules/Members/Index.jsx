@@ -7,7 +7,7 @@ import {Link} from '@inertiajs/react';
 import UITable from '@/Components/UIComponents/Tables/UITable';
 import { router } from '@inertiajs/react'
 
-const Index = ({members}) => {
+const Index = ({tableData, columns}) => {
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
     const [autoHeight, setAutoHeight] = useState(true);
@@ -16,28 +16,36 @@ const Index = ({members}) => {
         margin: "0px 24px"
     }
 
+    //Functions
     const handleChangeLimit = dataKey => {
         setPage(1);
         setLimit(dataKey);
     };
 
-    console.log(members);
+    const datatableData = () => {
+        return {
+            'tableData'   : tableData,
+            'columns'     : columns
+        }
+    };
 
-    const data = [{
-        id: 1,
-        firstName: 'Jonathan',
-        lastName: 'Santana',
-        city: 'Santo Domingo',
-        email: 'prueba@prueba.com',
-    },
-    {
-        id: 2,
-        firstName: 'Elianny',
-        lastName: 'Luciano',
-        city: 'Santo Domingo',
-        email: 'prueba2@prueba.com',
-    },
-    ]
+    console.log();
+
+    // const data = [{
+    //     memberId: 1,
+    //     first_name: 'Jonathan',
+    //     last_name: 'Santana',
+    //     phone: 'Santo Domingo',
+    //     email: 'prueba@prueba.com',
+    // },
+    // {
+    //     memberId: 2,
+    //     first_name: 'Elianny',
+    //     last_name: 'Luciano',
+    //     phone: 'Santo Domingo',
+    //     email: 'prueba2@prueba.com',
+    // },
+    // ]
 
     return(
         <Template>
@@ -59,7 +67,7 @@ const Index = ({members}) => {
                 </div>
             </div>
 
-            <UITable data={members}/>
+            <UITable data={[tableData, columns]}/>
         </Template>
     );
 }

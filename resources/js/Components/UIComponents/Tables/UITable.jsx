@@ -3,24 +3,24 @@ import { useState } from 'react';
 const { Column, HeaderCell, Cell } = Table;
 
 const UITable = ({data}) => {
-    const [limit, setLimit] = useState(10);
-    const [page, setPage] = useState(1);
-    const [autoHeight, setAutoHeight] = useState(true);
+    const [limit, setLimit]                 = useState(10);
+    const [page, setPage]                   = useState(1);
+    const [autoHeight, setAutoHeight]       = useState(true);
+    const tableData                         = data[0];
+    const columns                           = data[1];
 
     const handleChangeLimit = dataKey => {
         setPage(1);
         setLimit(dataKey);
     };
 
-    const columns = data.length > 0 ? Object.keys(data[0]) : [];
-
     return (
         <div>
-            <Table height={420} data={data} autoHeight={autoHeight}
+            <Table height={420} data={tableData} autoHeight={autoHeight}
                    affixHeader affixHorizontalScrollbar>
-
+                    
                 {columns.map((columnName, index) => (
-                    <Column key={index} width="100%" sortable resizable>
+                    <Column key={index} resizable>
                         <HeaderCell>{columnName}</HeaderCell>
                         <Cell dataKey={columnName} />
                     </Column>

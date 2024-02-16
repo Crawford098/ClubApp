@@ -16,9 +16,11 @@ class Members extends BaseController
 
     public function index (): Response
     {
-//        dd($this->memberModel->select(['memberId', 'first_name', 'last_name', 'email', 'phone'])->get()->toArray());
+        $columns = [ 'memberId', 'first_name', 'last_name', 'phone', 'email' ];
+
         return Inertia::render('Modules/Members/Index', [
-            'members' => $this->memberModel->select(['first_name', 'last_name', 'email', 'phone'])->get()->toArray()
+            'tableData'         => $this->memberModel->select($columns)->get()->toArray(),
+            'columns'           => $columns
         ]);
     }
 
