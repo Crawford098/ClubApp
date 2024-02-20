@@ -17,10 +17,20 @@ class Members extends BaseController
     public function index (): Response
     {
         $columns = [ 'memberId', 'first_name', 'last_name', 'phone', 'email' ];
+        $result = $this->memberModel->select($columns)->get()->toArray();
+        
+        $data = [];
 
+        foreach ($result as $key => $row)
+        {
+            $data[$key]['key'] = $row['memberId'];
+            $data[$key]['name'] = $row['first_name'] . ' ' . $row['last_name'];
+            $data[$key]['phone'] = $row['phone'];
+            $data[$key]['email'] = $row['email'];
+        }
+        
         return Inertia::render('Modules/Members/Index', [
-            'tableData'         => $this->memberModel->select($columns)->get()->toArray(),
-            'columns'           => $columns
+            'tableData'         => $data
         ]);
     }
 

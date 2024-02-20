@@ -2,72 +2,57 @@ import Template from '@/Layouts/Template';
 import { Input, InputGroup } from 'rsuite';
 import PrimaryButton from "@/Components/PrimaryButton";
 import style from '../../../../css/Modules/members.module.css';
-import { useState } from 'react';
-import {Link} from '@inertiajs/react';
-import UITable from '@/Components/UIComponents/Tables/UITable';
-import { router } from '@inertiajs/react'
+import { Link } from '@inertiajs/react';
+// import UITable from '@/Components/UIComponents/RsuitTables/UITable';
+import TableBasic from '@/Components/UIComponents/AntTables/TableBasic';
+import { Card, Divider } from 'antd';
 
-const Index = ({tableData, columns}) => {
-    const [limit, setLimit] = useState(10);
-    const [page, setPage] = useState(1);
-    const [autoHeight, setAutoHeight] = useState(true);
+const Index = ({ tableData }) => {
     const styles = {
         width: "300px",
         margin: "0px 24px"
     }
 
-    //Functions
-    const handleChangeLimit = dataKey => {
-        setPage(1);
-        setLimit(dataKey);
-    };
+    const tableColumns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+        },
+        {
+            title: 'Telefono',
+            dataIndex: 'phone',
+            key: 'phone',
+        },
+        {
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email',
+        },
+    ];
 
-    const datatableData = () => {
-        return {
-            'tableData'   : tableData,
-            'columns'     : columns
-        }
-    };
-
-    console.log();
-
-    // const data = [{
-    //     memberId: 1,
-    //     first_name: 'Jonathan',
-    //     last_name: 'Santana',
-    //     phone: 'Santo Domingo',
-    //     email: 'prueba@prueba.com',
-    // },
-    // {
-    //     memberId: 2,
-    //     first_name: 'Elianny',
-    //     last_name: 'Luciano',
-    //     phone: 'Santo Domingo',
-    //     email: 'prueba2@prueba.com',
-    // },
-    // ]
-
-    return(
+    return (
         <Template>
-            <div className="header flex w-full justify-between">
-                <div>
-                    <h2>Members</h2>
+            <Card bordered={false}>
+                <div className="header flex w-full justify-between">
+                    <div>
+                        <h3>Members</h3>
+                    </div>
+                    
+                    <div className={"content-body " + style.filterContainer}>
+                        <div className="flex justify-end">
+                            <InputGroup style={styles} size={'md'}>
+                                <Input placeholder="Buscar" />
+                            </InputGroup>
+
+                            <Link href={route('addMember')}>
+                                <PrimaryButton>New</PrimaryButton>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div className={"content-body " + style.filterContainer}>
-                <div className="flex justify-end">
-                    <InputGroup style={styles} size={'md'}>
-                        <Input placeholder="Buscar"/>
-                    </InputGroup>
-
-                    <Link href={route('addMember')}>
-                        <PrimaryButton>New</PrimaryButton>
-                    </Link>
-                </div>
-            </div>
-
-            <UITable data={[tableData, columns]}/>
+                <TableBasic tableData={tableData} columns={tableColumns} />
+            </Card>
         </Template>
     );
 }
