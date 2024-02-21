@@ -1,5 +1,6 @@
 import './Navigation';
-import Navigation from "@/Layouts/Navigation";
+// import Navigation from "@/Layouts/Navigation";
+import Navigation from "@/Layouts/AntNavigation";
 
 export default function Template ({children}) {
 
