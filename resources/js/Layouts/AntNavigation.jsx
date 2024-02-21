@@ -10,13 +10,14 @@ import {
 } from '@ant-design/icons';
 import { Button, Menu, Flex } from 'antd';
 
-function getItem(label, key, icon, children, type) {
+function getItem(label, key, icon, children, type, link) {
     return {
         key,
         icon,
         children,
         label,
         type,
+        link
     };
 }
 
@@ -50,11 +51,14 @@ const App = () => {
                 width: 256,
             }}
         >
-            <Flex gap="middle" align="start" vertical>
-                <Flex justify={'center'}>
-                    <PieChartOutlined />
-                    <p>Linaje Real</p>
-                    <small>Guias Mayores</small>
+            <Flex gap="middle" align="start" vertical style={navHeader}>
+                <Flex style={{ width: '100%' }}>
+                    <PieChartOutlined style={logoStyle} />
+                    <div style={infoHeader}>
+                        <p>Linaje Real</p>
+                        <small>Guias Mayores</small>
+                    </div>
+
                 </Flex>
             </Flex>
             <div>
@@ -73,4 +77,22 @@ const App = () => {
         </div>
     );
 };
+
+const navHeader = { 
+    backgroundColor: '#001529', 
+    color: '#f0ffff',
+    padding: '10px 0'
+}
+
+const logoStyle = {
+    fontSize: 50,
+    display: 'flex',
+    justifyItems: 'center',
+    padding: '12px 0 12px 24px'
+}
+
+const infoHeader = {
+    justifyItems: 'start',
+    padding: '12px 10px',
+}
 export default App;
