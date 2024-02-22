@@ -52,6 +52,11 @@ Route::middleware(['auth'])->group(function ()
     {
         Route::get('/calendar', 'index')->name('calendar');
     });
+
+    Route::controller(Treasury::class)->group(function ()
+    {
+        Route::get('/treasury', 'index')->name('treasury');
+    });
 });
 
 //Todo: Revisar lógica

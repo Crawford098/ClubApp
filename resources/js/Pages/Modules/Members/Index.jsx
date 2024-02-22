@@ -3,7 +3,6 @@ import { Input, InputGroup } from 'rsuite';
 import PrimaryButton from "@/Components/PrimaryButton";
 import style from '../../../../css/Modules/members.module.css';
 import { Link } from '@inertiajs/react';
-// import UITable from '@/Components/UIComponents/RsuitTables/UITable';
 import TableBasic from '@/Components/UIComponents/AntTables/TableBasic';
 import { Card, Divider } from 'antd';
 
@@ -38,7 +37,7 @@ const Index = ({ tableData }) => {
                     <div>
                         <h3>Members</h3>
                     </div>
-                    
+
                     <div className={"content-body " + style.filterContainer}>
                         <div className="flex justify-end">
                             <InputGroup style={styles} size={'md'}>
