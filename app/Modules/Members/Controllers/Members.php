@@ -4,6 +4,7 @@ use App\Models\Members\MembersModel;
 use Illuminate\Routing\Controller as BaseController;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class Members extends BaseController
 {
@@ -18,7 +19,7 @@ class Members extends BaseController
     {
         $columns = [ 'memberId', 'first_name', 'last_name', 'phone', 'email' ];
         $result = $this->memberModel->select($columns)->get()->toArray();
-        
+
         $data = [];
 
         foreach ($result as $key => $row)
@@ -28,7 +29,7 @@ class Members extends BaseController
             $data[$key]['phone'] = $row['phone'];
             $data[$key]['email'] = $row['email'];
         }
-        
+
         return Inertia::render('Modules/Members/Index', [
             'tableData'         => $data
         ]);
@@ -36,5 +37,9 @@ class Members extends BaseController
 
     public function addMember() : Response {
         return Inertia::render('Modules/Members/MemberAdd');
+    }
+
+    public function insert(Request $request) {
+
     }
 }

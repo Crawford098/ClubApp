@@ -40,7 +40,8 @@ Route::middleware(['auth'])->group(function ()
     {
         Route::get('/members', 'index')->name('members');
         Route::get('/members/add', 'addMember')->name('addMember');
-        Route::post('/members', 'update')->name('members.update');;
+        Route::post('/members/insert', 'insert')->name('members.insert');
+        Route::post('/members/update', 'update')->name('members.update');
     });
 
     Route::controller(Units::class)->group(function ()
