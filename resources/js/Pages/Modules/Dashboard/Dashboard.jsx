@@ -1,6 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import Template from '@/Layouts/Template';
 import { Head } from '@inertiajs/react';
+import { Input } from 'antd';
 
 export default function Dashboard(props) {
     return (

@@ -33,15 +33,15 @@ h3 {
     font-weight: bold;
 }
 
+/* Start - Ant Desing*/
+input.ant-input {
+    border-radius: 6px !important;
+    border: 1px solid #d9d9d9 !important;
+}
+/* End - Ant Desing*/
+
 /*****START Buttom*******/
 .primaryButton {
      padding: 8px 25px;
-}
-/*****END Table*******/
-
-/*****START Table*******/
-.rs-table {
-    border-radius: 5px;
-    background-color: #F7F7F7;
 }
 /*****END Table*******/

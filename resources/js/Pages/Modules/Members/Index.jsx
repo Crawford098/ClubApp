@@ -1,5 +1,5 @@
 import Template from "@/Layouts/Template";
-import { Input, InputGroup } from "rsuite";
+import { Input, InputGroup } from "rsuite"; 
 import PrimaryButton from "@/Components/PrimaryButton";
 import style from "../../../../css/Modules/members.module.css";
 import { Link } from "@inertiajs/react";
