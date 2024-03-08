@@ -2,9 +2,10 @@ import Template from "@/Layouts/Template";
 import { Card, Form, Flex, Button, DatePicker } from "antd";
 import { Input as AntInput } from 'antd';
 import { Insert } from "@/Request/Request";
-import Icon, { CloseCircleOutlined } from '@ant-design/icons';
 import imagen from '../../../../assets/images/PathFinder.png';
 import SelectPicker from '../../../Components/UIComponents/AntSelect/SelectPicker';
+import ModuleHeader from '@/Layouts/ModuleLayouts/ModuleHeader';
+import UploadAvatar from '@/Components/UIComponents/AntUpload/UploadAvatar';
 
 const MemberAdd = () => {
     // useEffect(() => {
@@ -21,16 +22,10 @@ const MemberAdd = () => {
     return (
         <Template>
             <Card>
-                <Flex justify={'space-between'}>
-                    <h3>MemberAdd</h3>
-                    <CloseCircleOutlined style={{ fontSize: '24px' }} />
-                </Flex>
-
+                <ModuleHeader title={'Agregar miembros'}/>
                 <Form name="basic" onFinish={handleSubmit}>
                     <Flex style={content}>
-                        <div style={logoDiv}>
-                            <img src={imagen} alt="logo" />
-                        </div>
+                        <UploadAvatar />
                         <div style={personalInfo}>
 
                             <div style={formGroup}>
@@ -94,6 +89,7 @@ const MemberAdd = () => {
 
 const content = {
     padding: "20px 16px",
+    margin: "0 70px"
 };
 
 const logoDiv = {
