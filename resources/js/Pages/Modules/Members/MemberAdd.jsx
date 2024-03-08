@@ -1,7 +1,8 @@
 import Template from "@/Layouts/Template";
-import { Card, Form, Flex, Button, DatePicker } from "antd";
+import { Card, Form, Flex, Button, DatePicker, Breadcrumb } from "antd";
 import { Input as AntInput } from 'antd';
 import { Insert } from "@/Request/Request";
+import { Link } from '@inertiajs/react';
 import imagen from '../../../../assets/images/PathFinder.png';
 import SelectPicker from '../../../Components/UIComponents/AntSelect/SelectPicker';
 import ModuleHeader from '@/Layouts/ModuleLayouts/ModuleHeader';
@@ -19,8 +20,21 @@ const MemberAdd = () => {
         const response = await Insert('members/insert', data);
     };
 
+    const breadCrumb = [
+        {
+          title: 'Home',
+        },
+        {
+          title: <Link href={route('members')}>Member</Link>,
+        },
+        {
+          title: 'Add Member',
+        },
+      ];
+
     return (
         <Template>
+            <Breadcrumb items={breadCrumb} style={{padding: '20px 10px'}} />
             <Card>
                 <ModuleHeader title={'Agregar miembros'}/>
                 <Form name="basic" onFinish={handleSubmit}>
