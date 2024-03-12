@@ -7,7 +7,8 @@ import imagen from '../../../../assets/images/PathFinder.png';
 import SelectPicker from '../../../Components/UIComponents/AntSelect/SelectPicker';
 import ModuleHeader from '@/Layouts/ModuleLayouts/ModuleHeader';
 import UploadAvatar from '@/Components/UIComponents/AntUpload/UploadAvatar';
-import {useState} from "react";
+import style from '../../../../css/Modules/members.module.css';
+import { useState } from "react";
 
 
 //Todo: Cambiar los estilos de "style" a "className"
@@ -33,15 +34,15 @@ const MemberAdd = () => {
     //Todo: Buscar desde la base de datos estos datos. {
     const breadCrumb = [
         {
-          title: 'Home',
+            title: 'Home',
         },
         {
-          title: <Link href={route('members')}>Member</Link>,
+            title: <Link href={route('members')}>Member</Link>,
         },
         {
-          title: 'Add Member',
+            title: 'Add Member',
         },
-      ];
+    ];
 
     const bloodType = [
         {
@@ -76,17 +77,18 @@ const MemberAdd = () => {
 
     return (
         <Template>
-            <Breadcrumb items={breadCrumb} style={{padding: '20px 10px'}} />
+            <Breadcrumb items={breadCrumb} style={{ padding: '20px 10px' }} />
             <Card>
-                <ModuleHeader title={'Agregar miembros'}/>
+                <ModuleHeader title={'Agregar miembros'} />
                 <Form name="basic" onFinish={handleSubmit}>
-                    <UploadAvatar />
                     <Flex style={content}>
+
+                        <div style={{ paddingBottom: '30px' }}><h2>Datos Personales</h2></div>
+                        <UploadAvatar />
                         <Flex>
                             <div style={formGroup}>
                                 <label>Name</label>
                                 <Form.Item name="name" rules={[{ required: true, message: "Please input your name" }]}>
-
                                     <AntInput placeholder="Basic usage" />
                                 </Form.Item>
                             </div>
@@ -94,7 +96,6 @@ const MemberAdd = () => {
                             <div style={formGroup}>
                                 <label>Lastname</label>
                                 <Form.Item name="lastname" rules={[{ required: true, message: "Please input your Lastname" }]}>
-
                                     <AntInput placeholder="Basic usage" />
                                 </Form.Item>
                             </div>
@@ -151,16 +152,16 @@ const MemberAdd = () => {
                         <Flex>
                             <div style={formGroup}>
                                 <label>Escuela</label>
-                                <Form.item  name="schoolName" rules={[{required: true, message: 'Please niput your School'}]}>
-                                    <AntInput placeholder="Escuela"/>
-                                </Form.item>
+                                <Form.Item name="schoolName" rules={[{ required: true, message: 'Please niput your School' }]}>
+                                    <AntInput placeholder="Escuela" />
+                                </Form.Item>
                             </div>
 
                             <div style={formGroup}>
                                 <label>Año</label>
-                                <Form.item  name="year" rules={[{required: true, message: 'Please niput your School'}]}>
-                                    <AntInput placeholder="Año"/>
-                                </Form.item>
+                                <Form.Item name="year" rules={[{ required: true, message: 'Please niput your School' }]}>
+                                    <AntInput placeholder="Año" />
+                                </Form.Item>
                             </div>
                         </Flex>
 
@@ -180,17 +181,25 @@ const MemberAdd = () => {
                             </div>
                         </Flex>
 
+                        <div style={{ title }}><h2>Padres o Tutores responsables</h2></div>
+
+                        <div>
+                            <Button htmlType="submit">Submit</Button>
+                        </div>
                     </Flex>
-                    <Button htmlType="submit">Submit</Button>
                 </Form>
             </Card>
         </Template>
     );
 };
 
+const title = {
+    paddingBottom: '30px'
+}
+
 const content = {
     padding: "20px 16px",
-    margin: "0 70px",
+    margin: "0 250px",
     flexDirection: 'column'
 };
 
