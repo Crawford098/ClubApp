@@ -1,5 +1,5 @@
 import Template from "@/Layouts/Template";
-import { Card, Form, Flex, Button, DatePicker, Breadcrumb } from "antd";
+import { Card, Form, Flex, Button, DatePicker, Breadcrumb, Checkbox } from "antd";
 import { Input as AntInput } from 'antd';
 import { Insert } from "@/Request/Request";
 import { Link } from '@inertiajs/react';
@@ -176,13 +176,53 @@ const MemberAdd = () => {
                             <div style={formGroup}>
                                 <label>Bautizado</label>
                                 <Form.Item name="religion" rules={[{ required: true, message: "Select an option" }]}>
-                                    {isBaptized ? <DatePicker /> : ''}
+                                    {isBaptized ? <DatePicker /> : <Checkbox />}
                                 </Form.Item>
                             </div>
                         </Flex>
 
                         <div style={{ title }}><h2>Padres o Tutores responsables</h2></div>
 
+                        <Flex>
+                            <div style={formGroup}>
+                                <label>Nombre del padre</label>
+                                <Form.Item name="name" rules={[{ required: true, message: "Please input your name" }]}>
+                                    <AntInput placeholder="Basic usage" />
+                                </Form.Item>
+                            </div>
+
+                            <div style={formGroup}>
+                                <label>Telefono de casa</label>
+                                <Form.Item name="telephone" rules={[{ required: true, message: "Please input your name" }]}>
+                                    <AntInput placeholder="Basic usage" />
+                                </Form.Item>
+                            </div>
+                        </Flex>
+
+                        <Flex>
+                            <div style={formGroup}>
+                                <label>Trabajo</label>
+                                <Form.Item name="Job" rules={[{ required: true, message: "Please input your name" }]}>
+                                    <AntInput placeholder="Basic usage" />
+                                </Form.Item>
+                            </div>
+
+                            <div style={formGroup}>
+                                <label>Celular</label>
+                                <Form.Item name="phone" rules={[{ required: true, message: "Please input your name" }]}>
+                                    <AntInput placeholder="Basic usage" />
+                                </Form.Item>
+                            </div>
+                        </Flex>
+
+                        <Flex>
+                            <div style={formGroup}>
+                                <label>Email</label>
+                                <Form.Item name="email" rules={[{ required: true, message: "Please input your name" }]}>
+                                    <AntInput placeholder="Basic usage" />
+                                </Form.Item>
+                            </div>
+                        </Flex>
                         <div>
                             <Button htmlType="submit">Submit</Button>
                         </div>
@@ -194,7 +234,8 @@ const MemberAdd = () => {
 };
 
 const title = {
-    paddingBottom: '30px'
+    paddingBottom: '60px',
+    marginBottom: '20px'
 }
 
 const content = {
