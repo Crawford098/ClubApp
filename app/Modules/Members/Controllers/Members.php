@@ -41,5 +41,6 @@ class Members extends BaseController
 
     public function insert(Request $request) {
 
+        dd($request->toArray());
     }
 }

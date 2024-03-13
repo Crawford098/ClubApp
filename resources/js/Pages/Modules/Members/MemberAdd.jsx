@@ -121,14 +121,14 @@ const MemberAdd = () => {
                         <Flex>
                             <div style={formGroup}>
                                 <label>Tipo de sangre</label>
-                                <Form.Item name="name" rules={[{ required: true, message: "Please select your bood type" }]}>
+                                <Form.Item name="bloodType">
                                     <SelectPicker data={bloodType} />
                                 </Form.Item>
                             </div>
 
                             <div style={formGroup}>
                                 <label>Seguro médico</label>
-                                <Form.Item name="lastname" rules={[{ required: true, message: "Please input your Health insurance" }]}>
+                                <Form.Item name="healthInsurance" rules={[{ required: true, message: "Please input your Health insurance" }]}>
                                     <AntInput placeholder="Basic usage" />
                                 </Form.Item>
                             </div>
@@ -137,13 +137,13 @@ const MemberAdd = () => {
                         <Flex>
                             <div style={formGroup}>
                                 <label>Dirección</label>
-                                <Form.Item name="lastName" rules={[{ required: true, message: "Please input your Direction" }]}>
+                                <Form.Item name="Direction" rules={[{ required: true, message: "Please input your Direction" }]}>
                                     <AntInput />
                                 </Form.Item>
                             </div>
                             <div style={formGroup}>
                                 <label>Sector</label>
-                                <Form.Item name="lastName" rules={[{ required: true, message: "Please input your Sector" }]}>
+                                <Form.Item name="sector" rules={[{ required: true, message: "Please input your Sector" }]}>
                                     <AntInput />
                                 </Form.Item>
                             </div>
@@ -168,25 +168,25 @@ const MemberAdd = () => {
                         <Flex>
                             <div style={formGroup}>
                                 <label>Religión</label>
-                                <Form.Item name="religion" rules={[{ required: true, message: "Select an option" }]}>
+                                <Form.Item name="religion">
                                     <SelectPicker data={religion} />
                                 </Form.Item>
                             </div>
 
                             <div style={formGroup}>
                                 <label>Bautizado</label>
-                                <Form.Item name="religion" rules={[{ required: true, message: "Select an option" }]}>
+                                <Form.Item name="date">
                                     {isBaptized ? <DatePicker /> : <Checkbox />}
                                 </Form.Item>
                             </div>
                         </Flex>
 
-                        <div style={{ title }}><h2>Padres o Tutores responsables</h2></div>
+                        <div style={title}><h2>Padres o Tutores responsables</h2></div>
 
                         <Flex>
                             <div style={formGroup}>
                                 <label>Nombre del padre</label>
-                                <Form.Item name="name" rules={[{ required: true, message: "Please input your name" }]}>
+                                <Form.Item name="parentName" rules={[{ required: true, message: "Please input your name" }]}>
                                     <AntInput placeholder="Basic usage" />
                                 </Form.Item>
                             </div>
@@ -218,14 +218,14 @@ const MemberAdd = () => {
                         <Flex>
                             <div style={formGroup}>
                                 <label>Email</label>
-                                <Form.Item name="email" rules={[{ required: true, message: "Please input your name" }]}>
+                                <Form.Item name="parentEmail" rules={[{ required: true, message: "Please input your name" }]}>
                                     <AntInput placeholder="Basic usage" />
                                 </Form.Item>
                             </div>
                         </Flex>
-                        <div>
+                        <Flex justify="end">
                             <Button htmlType="submit">Submit</Button>
-                        </div>
+                        </Flex>
                     </Flex>
                 </Form>
             </Card>
@@ -234,8 +234,7 @@ const MemberAdd = () => {
 };
 
 const title = {
-    paddingBottom: '60px',
-    marginBottom: '20px'
+    paddingBottom: '30px',
 }
 
 const content = {
