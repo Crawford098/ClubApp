@@ -9,6 +9,7 @@ import ModuleHeader from '@/Layouts/ModuleLayouts/ModuleHeader';
 import UploadAvatar from '@/Components/UIComponents/AntUpload/UploadAvatar';
 import style from '../../../../css/Modules/members.module.css';
 import { useState } from "react";
+import PlaceHolder from "@/Components/UIComponents/PlaceHolders/PlaceHolder";
 
 
 //Todo: Cambiar los estilos de "style" a "className"
@@ -181,6 +182,10 @@ const MemberAdd = () => {
                             </div>
                         </Flex>
 
+                        <PlaceHolder>
+                            <h3>Placeholder</h3>
+                        </PlaceHolder>
+
                         <div style={title}><h2>Padres o Tutores responsables</h2></div>
 
                         <Flex>
@@ -235,6 +240,7 @@ const MemberAdd = () => {
 
 const title = {
     paddingBottom: '30px',
+    paddingTop: '30px'
 }
 
 const content = {
