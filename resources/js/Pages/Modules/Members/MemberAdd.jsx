@@ -1,5 +1,5 @@
 import Template from "@/Layouts/Template";
-import { Card, Form, Flex, Button, DatePicker, Breadcrumb, Checkbox } from "antd";
+import { Card, Form, Flex, Button, DatePicker, Breadcrumb, Checkbox, Select } from "antd";
 import { Input as AntInput } from 'antd';
 import { Insert } from "@/Request/Request";
 import { Link } from '@inertiajs/react';
@@ -76,6 +76,14 @@ const MemberAdd = () => {
     ];
     //Todo: }
 
+    const options = [];
+    for (let i = 10; i < 36; i++) {
+        options.push({
+            label: i.toString(36) + i,
+            value: i.toString(36) + i,
+        });
+    }
+
     return (
         <Template>
             <Breadcrumb items={breadCrumb} style={{ padding: '20px 10px' }} />
@@ -85,7 +93,11 @@ const MemberAdd = () => {
                     <Flex style={content}>
 
                         <div style={{ paddingBottom: '30px' }}><h2>Datos Personales</h2></div>
-                        <UploadAvatar />
+
+                        <div style={formGroup}>
+                            <UploadAvatar />
+                        </div>
+
                         <Flex>
                             <div style={formGroup}>
                                 <label>Name</label>
@@ -138,7 +150,7 @@ const MemberAdd = () => {
                         <Flex>
                             <div style={formGroup}>
                                 <label>Dirección</label>
-                                <Form.Item name="Direction" rules={[{ required: true, message: "Please input your Direction" }]}>
+                                <Form.Item name="adrress" rules={[{ required: true, message: "Please input your Direction" }]}>
                                     <AntInput />
                                 </Form.Item>
                             </div>
@@ -177,14 +189,34 @@ const MemberAdd = () => {
                             <div style={formGroup}>
                                 <label>Bautizado</label>
                                 <Form.Item name="date">
-                                    {isBaptized ? <DatePicker /> : <Checkbox />}
+                                    {isBaptized ? <DatePicker /> : <Checkbox name="baptized"/>}
                                 </Form.Item>
                             </div>
                         </Flex>
 
-                        <PlaceHolder>
-                            <h3>Placeholder</h3>
-                        </PlaceHolder>
+                        {/* <Flex vertical={true}>
+                            <div style={formGroup}>
+                                <Select
+                                    mode="multiple"
+                                    allowClear
+                                    style={{
+                                        width: '100%',
+                                        paddingBottom: '12px'
+                                    }}
+                                    placeholder="Please select"
+                                    defaultValue={['a10', 'c12']}
+                                    onChange={() => { }}
+                                    options={options}
+                                />
+                            </div>
+
+                            <div style={formGroup}>
+                                <PlaceHolder>
+                                    <h3>Placeholder</h3>
+                                </PlaceHolder>
+                            </div>
+                        </Flex> */}
+
 
                         <div style={title}><h2>Padres o Tutores responsables</h2></div>
 
