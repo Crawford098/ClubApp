@@ -1,5 +1,6 @@
 <?php namespace App\Modules\Auth\Controllers;
 
+use App\Models\Modules\Clubs\ClubTypesModel;
 use App\Modules\Auth\Models\FieldOfficeModel;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -17,15 +18,20 @@ class Auth
 
     public function index(): \Inertia\Response
     {
+        $clubTypes = new ClubTypesModel();
+
         $data = $this->fieldOfficeModel->getColumnBy([
             'columns' => ['field_officeId','code','typeId','parentId','name', 'level'],
             'whereIn' => ['typeId' => [4,5,6]],
             'where'   => ['hidden' => 0]
         ]);
 
+//        dd($clubTypes->selectData());
+
         return Inertia::render('Auth/Register', [
             'churchesData'      => $this->getChurchDropdown($this->objectToArray($data), 4),
-            'disableItemValue'  => $this->itemsDisable($data)
+            'disableItemValue'  => $this->itemsDisable($data),
+            'clubTypes'         => $clubTypes->selectData()
         ]);
     }
 
@@ -40,12 +46,17 @@ class Auth
             if ($level == $value['level'] && ($parentId == 0 || $parentId == $value['parentId']))
             {
                 $result[$counter]['value']       = $value['field_officeId'];
-                $result[$counter]['label']       = $value['name'];
+                $result[$counter]['title']       = $value['name'];
                 $result[$counter]['children']    = $this->getChurchDropdown($data, $level+1, $value['field_officeId']);
 
                 if (empty($result[$counter]['children']))
                 {
                     unset($result[$counter]['children']);
+                }
+                else
+                {
+                    //If not empty meaning is a parent row, therefore is a disable option.
+                    $result[$counter]['disabled']    = true;
                 }
                 $counter++;
             }

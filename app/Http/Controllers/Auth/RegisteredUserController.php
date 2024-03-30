@@ -1,9 +1,9 @@
-<?php
-
-namespace App\Http\Controllers\Auth;
+<?php namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Modules\Church\FieldOfficeModel;
 use App\Models\User;
+use App\Models\Modules\Church\ChurchModel;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -23,6 +23,24 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //Todo: Guardar igleisa...
+        $request->validate([
+            'churchId' => 'required|numeric'
+        ]);
+
+        //PROBANDO EL QUERY DE FIELD OFFICE iD
+        $fieldOffice = new FieldOfficeModel();
+        dd($fieldOffice->getFieldOfficeData());
+
+        $church = ChurchModel::create([
+            'field_officeId' => $request->churchId,
+
+        ]);
+
+        //Todo: Guardar club....
+
+
+        //Todo: Guardando usuario
         $request->validate([
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:'.User::class,

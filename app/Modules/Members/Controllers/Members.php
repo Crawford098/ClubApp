@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Members\Controllers;
 
-use App\Models\Members\MembersModel;
+use App\Models\Modules\Members\MembersModel;
 use Illuminate\Routing\Controller as BaseController;
 use Inertia\Inertia;
 use Inertia\Response;

@@ -4,14 +4,14 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import Dropdown from '@/Components/Dropdown';
-import { SelectPicker, CheckTreePicker } from 'rsuite';
 import { Head, Link, useForm } from '@inertiajs/react';
+import { TreeSelect, Select, Flex } from 'antd';
 
-export default function Register({churchesData, disableItemValue}) {
+export default function Register({churchesData, disableItemValue, clubTypes}) {
 
     const { data, setData, post, processing, errors, reset } = useForm({
         churchId: '',
+        clubIds: '',
         username: '',
         email: '',
         password: '',
@@ -34,6 +34,16 @@ export default function Register({churchesData, disableItemValue}) {
         post(route('register'));
     };
 
+    const setClubArrayData = (values) => {
+        let valueArray = [];
+        values.forEach(value => {
+            valueArray.push(value);
+        });
+        setData('clubIds', valueArray);
+
+        return valueArray;
+    }
+
     return (
         <GuestLayout pageName={'Register'}>
             <Head title="Register" />
@@ -42,21 +52,35 @@ export default function Register({churchesData, disableItemValue}) {
                 <div className="my-6">
                     <h2>Register Your Church</h2>
                 </div>
-                <div>
-                    <InputLabel htmlFor="churchId" value="Church Name" />
 
-                    <CheckTreePicker
-                        defaultExpandAll
-                        data={churchesData}
+                <div className="mt-4">
+                    <InputLabel htmlFor="churchId" value="Church Name" />
+                    <TreeSelect
+                        size={"large"}
+                        treeData={churchesData}
+                        allowClear
+                        treeDefaultExpandAll
+                        placeholder="Select an option"
                         name='churchId'
-                        disabledItemValues={disableItemValue}
                         style={{ width: '100%' }}
                         onChange={(values)=> {
-                            setData("churchId", values[0]);
+                            setData("churchId", values);
                         }}
                     />
+                </div>
 
-                    {/*<InputError message={errors.churchName} className="mt-2" />*/}
+                <div className="mt-4">
+                    <InputLabel htmlFor="Clubs" value="Select Clubs" />
+                    <Select
+                        mode="multiple"
+                        name="clubs"
+                        allowClear
+                        style={{ width: '100%' }}
+                        placeholder="Select an option"
+                        onChange={setClubArrayData}
+                        options={clubTypes}
+                        size="large"
+                    />
                 </div>
 
                 <div className="mt-4">
@@ -101,7 +125,7 @@ export default function Register({churchesData, disableItemValue}) {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="mt-1 w-full"
                         autoComplete="new-password"
                         onChange={handleOnChange}
                         required
@@ -118,7 +142,7 @@ export default function Register({churchesData, disableItemValue}) {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
+                        className="mt-1 w-full"
                         autoComplete="new-password"
                         onChange={handleOnChange}
                         required

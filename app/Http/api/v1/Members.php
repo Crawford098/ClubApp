@@ -1,10 +1,10 @@
 <?php namespace App\Http\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Members\MembersModel;
+use App\Models\Modules\Members\MembersModel;
 use App\ValidationsRules\MembersRules;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class Members extends Controller
 {

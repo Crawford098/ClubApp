@@ -1,4 +1,4 @@
-<?php namespace App\Models\Members;
+<?php namespace App\Models\Modules\Members;
 
 use Illuminate\Database\Eloquent\Model;
 
