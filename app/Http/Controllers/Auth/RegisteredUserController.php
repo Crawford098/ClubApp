@@ -23,37 +23,43 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //Todo: Guardar igleisa...
+        $fieldOffice = new FieldOfficeModel();
+
+        //Todo: Guardar iglesia...
         $request->validate([
             'churchId' => 'required|numeric'
         ]);
 
-        //PROBANDO EL QUERY DE FIELD OFFICE iD
-        $fieldOffice = new FieldOfficeModel();
-        dd($fieldOffice->getFieldOfficeData());
+        $fieldOfficeData = $fieldOffice->getFieldOfficeData($request->churchId);
 
         $church = ChurchModel::create([
             'field_officeId' => $request->churchId,
-
+            "name" => $fieldOfficeData->name,
+            "address" => $fieldOfficeData->address_1,
+            "hidden" => 0
         ]);
 
-        //Todo: Guardar club....
+        dd($church);
 
+        if ($church)
+        {
+            //Todo: Guardar club....
 
-        //Todo: Guardando usuario
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+            //Todo: Guardando usuario
+            $request->validate([
+                'username' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:'.User::class,
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ]);
 
-        $user = User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'churchId'  => $request->churchId,
-            'created_date' => date('Y-m-d')
-        ]);
+            $user = User::create([
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'churchId'  => $request->churchId,
+                'created_date' => date('Y-m-d')
+            ]);
+        }
 
         event(new Registered($user));
 

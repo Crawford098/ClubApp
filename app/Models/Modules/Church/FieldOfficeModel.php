@@ -1,6 +1,7 @@
 <?php namespace App\Models\Modules\Church;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class FieldOfficeModel extends Model
 {
@@ -10,8 +11,9 @@ class FieldOfficeModel extends Model
                                 'address_1', 'address_2', 'city', 'state', 'country', 'postal', 'hidden', 'status'
     ];
 
-    public function getFieldOfficeData () : array
+    public function getFieldOfficeData (int $field_officeId) : object
     {
-        return $this->statement("Select * from ai_field_offices")->getArray();
+        return DB::table("ai_field_offices")->where("field_officeId", $field_officeId)->first();
     }
 }
+
