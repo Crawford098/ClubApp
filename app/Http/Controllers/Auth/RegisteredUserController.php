@@ -33,13 +33,12 @@ class RegisteredUserController extends Controller
         $fieldOfficeData = $fieldOffice->getFieldOfficeData($request->churchId);
 
         $church = ChurchModel::create([
-            'field_officeId' => $request->churchId,
-            "name" => $fieldOfficeData->name,
-            "address" => $fieldOfficeData->address_1,
-            "hidden" => 0
+            "field_officeId"    => $request->churchId,
+            "districtId"        => $fieldOfficeData->parentId,
+            "name"              => $fieldOfficeData->name,
+            "address"           => $fieldOfficeData->address_1,
+            "hidden"            => 0
         ]);
-
-        dd($church);
 
         if ($church)
         {
@@ -53,17 +52,17 @@ class RegisteredUserController extends Controller
             ]);
 
             $user = User::create([
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'churchId'  => $request->churchId,
-                'created_date' => date('Y-m-d')
+                'username'      => $request->username,
+                'email'         => $request->email,
+                'password'      => Hash::make($request->password),
+                'churchId'      => $request->churchId,
+                'created_date'  => date('Y-m-d')
             ]);
+
+            event(new Registered($user));
+
+            Auth::login($user);
         }
-
-        event(new Registered($user));
-
-        Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }
